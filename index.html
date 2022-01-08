@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>screenlock</title>
+    <style>
+        *{
+        padding: 0;
+        margin: 0;
+    }
+        body{
+            background-color: peachpuff;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .container{
+            background: linear-gradient(rgba(0, 0, 255, 0.507),rgba(255, 255, 0, 0.315));
+            background-color:tomato;
+            color:wheat;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            display: none;
+            width:18vw;
+            height:70vh;
+            padding: 10vh;
+            border-radius: 50px;
+            margin-top: 50px;
+            
+        }
+        .btn{
+            width: 50px;
+            height: 50px;
+            background-color: transparent;
+            border-color: thistle;
+            color:yellow;
+            font-weight: bolder;
+            font-size:xx-large;
+            border-radius: 50%;
+        }
+        button:hover{
+            background-color: blue;
+        }
+        .homescreen{
+            display: none;
+        }
+        #keycontainer{
+            width: 50vw;
+            height: 50vh;
+            text-align: center;
+            justify-content: center;
+            padding-top: 10vh;
+            margin-bottom: 5vh;
+            border-radius: 50px;
+            margin-top: 10vh;
+        }
+        #key{
+            width: 12vw;
+            height: 10vh;
+            margin-bottom: 3vh;
+        }
+        #input{
+            width: 25vh;
+            height: 25vh;
+            color: brown;
+            font-size: larger;
+        }
+        img{
+            width:90vw;
+            height:90vh;
+        }
+        #btn1{
+            width:10vw;
+        }
+        #submit{
+            color: navy;
+            background-color: gainsboro;
+            font-weight: bolder;
+            width:10vw;
+            height:6vh;
+            border: none;
+            font-family: fantasy;
+            font-size: xx-large;
+        }
+        h1{
+            text-align: center;
+        }
+
+    </style>
+</head>
+<body>
+    <div id="keycontainer">
+        <h1>Enter the  4 number Key to set lock!</h1><br>
+        <input placeholder="Enter the Key here to set" type="text" id="key" maxlength="4" minlength="4" pattern="0,1,2,3,4,5,6,7,8,9"><br>
+        <button onclick="submit()" id="submit">submit</button>
+    </div>
+    <div  class="container">
+        <h1>Enter the correct Key!</h1>
+        <input id="input" placeholder="Enter the key here!"type="password" maxlength="4" minlength="4" pattern="0,1,2,3,4,5,6,7,8,9" >
+        <br>
+        <div class="buttons">
+            <button class="btn" onclick="number('1')">1</button>
+            <button class="btn" onclick="number('2')">2</button>
+            <button class="btn" onclick="number('3')">3</button><br><br/>
+            <button class="btn" onclick="number('4')">4</button>
+            <button class="btn" onclick="number('5')">5</button>
+            <button class="btn" onclick="number('6')">6</button><br><br/>
+            <button class="btn" onclick="number('7')">7</button>
+            <button class="btn" onclick="number('8')">8</button>
+            <button class="btn" onclick="number('9')">9</button><br><br/>
+            <button class="btn" onclick="number('*')">*</button>
+            <button class="btn" onclick="number('0')">0</button>
+            <button class="btn" onclick="number('#')">#</button><br><br><br/>
+            <button id="btn1" class="btn" onclick="unlock()">unlock</button>
+        </div>
+    </div>
+    <div class="homescreen">
+        <h1>Screen unlocked!</h1>
+        <img src="https://images.pexels.com/photos/1563356/pexels-photo-1563356.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"/>
+    </div>
+    <script>
+        var input =document.getElementById("input");
+        var container = document.querySelector('.container');
+        var keycontainer = document.getElementById("keycontainer");
+        var key = document.getElementById("key");
+        var homescreen =document.querySelector(".homescreen");
+        function submit(){
+            keycontainer.style.display = "none";
+            container.style.display="flex";
+        }
+        function number(x){
+            input.value=input.value+x; 
+        }
+        function unlock(){
+            if (input.value === key.value)
+             {
+                container.style.display= "none";
+                homescreen.style.display="initial";
+                keycontainer.style.display="none";
+             }
+             else
+                 alert("Enter the correct Key!");
+        }
+    </script>
+    
+</body>
+</html>
